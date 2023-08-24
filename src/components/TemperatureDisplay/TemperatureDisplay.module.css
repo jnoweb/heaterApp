@@ -1,0 +1,75 @@
+.temperatureDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    width: 100px;
+    background-color: rgb(204, 202, 202);
+    padding: 10px;
+}
+
+.temperatureDisplay__circle {
+    margin-bottom: 10px;
+    height: 70px;
+    width: 70px;
+    border: black 1px solid;
+    border-radius: 50%;
+    position: relative;
+    transform: rotate(180deg);
+    z-index: 1;
+
+    /* RANGE INDICATIORS */
+    &::after {
+        content: "";
+        position: absolute;
+        background-color: transparent;
+        width: 50%;
+        height: 50%;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        transform: rotate(45deg) translate(-50%, -50%);
+        transform-origin: left top;
+        left: 50%;
+        top: 1%;
+        z-index: -1;
+    }
+    /* MASKS THE RANGE INDICATIORS */
+    &::before {
+        content: "";
+        position: absolute;
+        background-color:  rgb(204, 202, 202);
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        border-radius: 50%;
+    }
+
+    /* TEMPERATURE INDICATOR */
+    & div {
+        position: absolute;
+        width: 2px;
+        height: 50%;
+        background-color: transparent;
+        top: 50%;
+        left: 50%;
+        transform-origin: bottom center;
+        z-index: 1;
+
+        &::after{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 70%;
+            background-color: black;
+            top: 0;
+            left: 0;
+        }
+    }
+}
+
+.temperatureDisplay__currentTemperature-text {
+    font-size: 1rem;
+    margin: 0;
+}
+
